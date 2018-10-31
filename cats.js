@@ -2,12 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
   var kittyButton = document.querySelector('.summon-cats');
   kittyButton.addEventListener('click', function() {
     axios({
-      url: 'http://bitkittens.herokuapp.com/cats.json',
+      url: 'http://bitkittens.herokuapp.com/cats.json?number=4',
       method: 'get',
       dataType: 'text'
     }).then(function(response) {
       var kitties = response.data.cats;
-      // kitties.forEach(function(kitty) {
       for (var i = 0; i < kitties.length; i++) {
         let img = document.createElement('img');
         img.src = kitties[i].photo;
@@ -16,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         catBox.innerHTML = ''
         catBox.append(img);
       }
-
-      // });
       console.log(kitties);
     });
   });
